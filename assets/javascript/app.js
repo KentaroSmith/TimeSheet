@@ -34,6 +34,7 @@ $("#submit-form").on("click", function (event) {
     startDate = $("#start-date").val().trim();
     monthlyRate = parseFloat($("#monthly-rate").val().trim());
     //totalBilled = $("#total-billed").val().trim();
+    $(".table").empty();
     database.ref().push({
         name: name,
         role: role,
@@ -58,12 +59,59 @@ database.ref().on("child_added", function (snapshot) {
     //$("#monthlyRate").text(sv.monthlyRate);
     //$("#totalBilled").text(sv.totalBilled);
 
+    //$(".table").empty();
+    var ref = database.ref();
+    console.log(snapshot.key + " - name is " + snapshot.val().name);
+    createRow(snapshot.val());
+    /*ref.orderByChild("height").on("child_added", function (snapshot) {
+        console.log(snapshot.key + " - name is " + snapshot.val().name);
+
+        createRow(snapshot.val());
+    });*/
 
 
 
 }, function (errorObject) {
     console.log('Errors Handled: ' + errorObject.code);
 });
+
+
+
+function createRow(data) {
+    //var body = $('body')[0];
+    var tbl = $('.table');
+    //var tblBody = $('tbody');
+
+    //for (var j = 0; j <= 2; j++) {
+    //var newTR = $('<tr>');
+
+    //for (var i = 0; i < 2; i++) {
+    //var cell = $('<td>');
+    //var cellText = $('cell is row ' + j + ', column ' + i);
+
+    //cell.text();
+    //cell.append(cellText);
+    var row = $('<tr>');
+    row.append($('<td>').text(data.name));
+    row.append($('<td>').text(data.role));
+    row.append($('<td>').text(data.startDate));
+    row.append($('<td>')); //monthsWorked
+    row.append($('<td>').text(data.monthlyRate));
+    row.append($('<td>')); //totalBilled
+    //}
+
+    tbl.append(row);
+
+    //}
+
+    //tbl.append(tblBody);
+    //body.append(tbl);
+    //tbl.attr('border', '2');
+}
+
+
+
+
 //firebase info path "role" = i.node_.children_.root_.value.value_
 //"name" = i.node_.children_.root_.left.value.value_
 //
