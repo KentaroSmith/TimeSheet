@@ -14,6 +14,10 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
+    <!-- Link to Moment.js should go here -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
 
@@ -33,14 +37,14 @@
         <section id="current-employees">
             <!-- Todd -->
             <table class="table">
-                <th>
-                <td>Employee Name</td>
-                <td>Role</td>
-                <td>Start Date</td>
-                <td>Months Worked</td>
-                <td>Monthly Rate ($)</td>
-                <td>Total Billed ($)</td>
-                </th>
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Role</th>
+                    <th>Start Date</th>
+                    <th>Months Worked</th>
+                    <th>Monthly Rate ($)</th>
+                    <th>Total Billed ($)</th>
+                </tr>
 
             </table>
         </section>
@@ -66,7 +70,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="start-date">Start Date (MM/DD/YYYY)</label>
-                                    <input class="form-control" id="start-date" type="number">
+                                    <input class="form-control" id="start-date" type="date">
                                 </div>
                                 <div class="form-group">
                                     <label for="monthly-rate">Monthly Rate</label>
